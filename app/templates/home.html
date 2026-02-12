@@ -1,0 +1,514 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTTO Trans Inc. - Drive More, Earn More</title>
+    <meta name="description" content="Get steady freight, competitive pay, and the support you need to keep moving forward with OTTO Trans Inc.">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#hero" class="logo">
+                    <img src="{% static 'images/logo.svg' %}" alt="OTTO Trans Inc." />
+                </a>
+                
+                <nav class="nav desktop-nav">
+                    <a href="#about">About</a>
+                    <a href="#opportunity">Opportunity</a>
+                    <a href="#partners">Partners</a>
+                    <a href="#findings">Weekly Performance</a>
+                    <a href="#contacts">Contacts</a>
+                </nav>
+
+                <a href="tel:(267) 270-6626" class="btn-phone desktop-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3.21778 6.92444C4.49778 9.44 6.56 11.4933 9.07556 12.7822L11.0311 10.8267C11.2711 10.5867 11.6267 10.5067 11.9378 10.6133C12.9333 10.9422 14.0089 11.12 15.1111 11.12C15.6 11.12 16 11.52 16 12.0089V15.1111C16 15.6 15.6 16 15.1111 16C6.76444 16 0 9.23556 0 0.888889C0 0.4 0.4 0 0.888889 0H4C4.48889 0 4.88889 0.4 4.88889 0.888889C4.88889 2 5.06667 3.06667 5.39556 4.06222C5.49333 4.37333 5.42222 4.72 5.17333 4.96889L3.21778 6.92444Z" fill="white"/>
+                    </svg>
+                    <span>(267) 270-6626</span>
+                </a>
+
+                <button class="menu-toggle mobile-btn" id="menuToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 18H21M3 12H21M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <nav class="mobile-nav">
+                <a href="#about">About</a>
+                <a href="#opportunity">Opportunity</a>
+                <a href="#partners">Partners</a>
+                <a href="#findings">Weekly Performance</a>
+                <a href="#contacts">Contacts</a>
+            </nav>
+            <a href="tel:(267) 270-6626" class="btn-phone">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3.21778 6.92444C4.49778 9.44 6.56 11.4933 9.07556 12.7822L11.0311 10.8267C11.2711 10.5867 11.6267 10.5067 11.9378 10.6133C12.9333 10.9422 14.0089 11.12 15.1111 11.12C15.6 11.12 16 11.52 16 12.0089V15.1111C16 15.6 15.6 16 15.1111 16C6.76444 16 0 9.23556 0 0.888889C0 0.4 0.4 0 0.888889 0H4C4.48889 0 4.88889 0.4 4.88889 0.888889C4.88889 2 5.06667 3.06667 5.39556 4.06222C5.49333 4.37333 5.42222 4.72 5.17333 4.96889L3.21778 6.92444Z" fill="white"/>
+                </svg>
+                <span>(267) 270-6626</span>
+            </a>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="hero" class="section hero-section">
+            <div class="section-head">
+                <h1 class="section-title">Drive More. Earn More.<br>Grow with OTTO Trans Inc.</h1>
+                <p class="section-description">Get steady freight, competitive pay, and the support you need to keep moving forward.</p>
+                <a href="#contacts" class="btn-primary">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'images/hero.webp' %}" alt="Trucking" />
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Who We Are</h2>
+                <p class="section-description"><strong>OTTO Trans Inc.</strong> is a U.S.-based logistics company connecting drivers with reliable freight and top shippers.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <img src="{% static 'images/1.svg' %}" alt="Steady weekly loads" />
+                    </div>
+                    <p>Steady weekly loads</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <img src="{% static 'images/2.svg' %}" alt="Higher pay rates" />
+                    </div>
+                    <p>Higher pay rates for DryVan, Flatbed, Reefer and PO (Amazon and US mail)</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <img src="{% static 'images/3.svg' %}" alt="Partnerships" />
+                    </div>
+                    <p>Partnerships with trusted names in logistics</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <img src="{% static 'images/4.svg' %}" alt="Transparent processes" />
+                    </div>
+                    <p>Transparent, driver-focused processes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opportunity Section -->
+        <section id="opportunity" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Choose the Right Opportunity<br>for Your Success</h2>
+                <p class="section-description">At <strong>OTTO Trans Inc.</strong>, we offer flexible options for drivers. Pick the type of freight that matches your goals and lifestyle.</p>
+            </div>
+            <div class="opportunity-cards">
+                <article class="opportunity-card" data-title="Dry Van" data-image="{% static 'images/dryvan.webp' %}">
+                    <div class="opportunity-card-content">
+                        <h3>Dry Van</h3>
+                        <ul>
+                            <li>Enclosed and secure</li>
+                            <li>Perfect for general freight</li>
+                            <li>Consistent loads nationwide</li>
+                        </ul>
+                    </div>
+                    <div class="opportunity-gradient"></div>
+                    <div class="opportunity-cta">
+                        <span>Click to apply</span>
+                        <img src="{% static 'images/cursor.svg' %}" alt="Click" />
+                    </div>
+                    <img src="{% static 'images/dryvan.webp' %}" alt="Dry Van trucking service" class="opportunity-bg" />
+                </article>
+
+                <article class="opportunity-card" data-title="Flatbed" data-image="{% static 'images/flatbed.webp' %}">
+                    <div class="opportunity-card-content">
+                        <h3>Flatbed</h3>
+                        <ul>
+                            <li>Ideal for oversized and heavy cargo</li>
+                            <li>Higher pay rates</li>
+                            <li>Flexibility for unique shipments</li>
+                        </ul>
+                    </div>
+                    <div class="opportunity-gradient"></div>
+                    <div class="opportunity-cta">
+                        <span>Click to apply</span>
+                        <img src="{% static 'images/cursor.svg' %}" alt="Click" />
+                    </div>
+                    <img src="{% static 'images/flatbed.webp' %}" alt="Flatbed trucking service" class="opportunity-bg" />
+                </article>
+
+                <article class="opportunity-card" data-title="PO (AMAZON and US mail)" data-image="{% static 'images/po.webp' %}">
+                    <div class="opportunity-card-content">
+                        <h3>PO (AMAZON and US mail)</h3>
+                        <ul>
+                            <li>Lightweight freight</li>
+                            <li>Fewer weigh station checks</li>
+                            <li>Fixed and reliable schedules</li>
+                            <li>Amazon provides the trailer → no rental fees</li>
+                        </ul>
+                    </div>
+                    <div class="opportunity-gradient"></div>
+                    <div class="opportunity-cta">
+                        <span>Click to apply</span>
+                        <img src="{% static 'images/cursor.svg' %}" alt="Click" />
+                    </div>
+                    <img src="{% static 'images/po.webp' %}" alt="PO trucking service" class="opportunity-bg" />
+                </article>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Trusted Partners</h2>
+                <p class="section-description">We work with leading logistics companies to bring you reliable freight opportunities.</p>
+            </div>
+            <div class="partners-carousel-container">
+                <button class="carousel-btn carousel-btn-prev" id="partnersPrev">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="partners-carousel" id="partnersCarousel">
+                    <div class="partners-track" id="partnersTrack">
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.02.57.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.02.58.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.02.59.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.00.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.00_(1).jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.01.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.02.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.02_(1).jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.03.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.04.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.04_(1).jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.05.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.06.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.06_(1).jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.07.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.08.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.08 (1).jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.09.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.10.jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.10_(1).jpeg' %}" alt="Partner" /></div>
+                        <div class="partner-logo"><img src="{% static 'images/photo_2025-10-01_19.03.11.jpeg' %}" alt="Partner" /></div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-next" id="partnersNext">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="carousel-dots" id="partnersDots"></div>
+        </section>
+
+        <!-- Weekly Performance Section -->
+        <section id="findings" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Weekly Performance</h2>
+                <p class="section-description">See what our drivers are earning this week</p>
+            </div>
+            <div class="findings-grid" id="findingsGrid">
+                <div class="findings-card">
+                    <h3 class="findings-title">Loading...</h3>
+                    <p class="findings-text">Please wait while we load the latest performance data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section id="contacts" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-description">Ready to start driving with us? Contact our team today.</p>
+            </div>
+            <div class="contacts-grid">
+                <div class="contact-form">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            {{ form.full_name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            {{ form.phone_number }}
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            {{ form.message }}
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Phone</h4>
+                        <a href="tel:(267) 270-6626">(267) 270-6626</a>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <a href="mailto:operations@ottotransinc.com">operations@ottotransinc.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Address</h4>
+                        <p>840 1st Ave Suite 400<br>King of Prussia, PA 19406</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{% static 'images/logo.svg' %}" alt="OTTO Trans Inc." />
+                </div>
+                <nav class="footer-nav">
+                    <a href="#about">About</a>
+                    <a href="#opportunity">Opportunity</a>
+                    <a href="#partners">Partners</a>
+                    <a href="#findings">Weekly Performance</a>
+                    <a href="#contacts">Contacts</a>
+                </nav>
+                <div class="footer-cta">
+                    <p>Need reliable freight solutions?<br>OTTO Trans Inc. delivers your loads safely and on time — anywhere across the U.S.</p>
+                    <button class="btn-accent" id="shipperBtn">Broker/Shipper Request</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 OTTO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking backdrop
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Load findings from API
+        async function loadFindings() {
+            try {
+                const response = await fetch('/api/findings');
+                const findings = await response.json();
+                const activeFindings = findings.filter(f => f.isActive).slice(0, 3);
+                
+                const findingsGrid = document.getElementById('findingsGrid');
+                if (activeFindings.length > 0) {
+                    findingsGrid.innerHTML = activeFindings.map(f => `
+                        <div class="findings-card">
+                            <h3 class="findings-title">${f.title}</h3>
+                            <p class="findings-text">${f.text}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    findingsGrid.innerHTML = '<div class="findings-card"><p>No performance data available at this time.</p></div>';
+                }
+            } catch (error) {
+                console.error('Failed to load findings:', error);
+            }
+        }
+
+        loadFindings();
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Message sent successfully!');
+                    e.target.reset();
+                } else {
+                    alert('Failed to send message. Please try again.');
+                }
+            } catch (error) {
+                alert('Failed to send message. Please try again.');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Opportunity cards click to apply
+        document.querySelectorAll('.opportunity-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.dataset.title;
+                alert(`Apply for ${title} position - This would open an application form.`);
+            });
+        });
+
+        // Partners Carousel
+        const partnersTrack = document.getElementById('partnersTrack');
+        const partnersPrev = document.getElementById('partnersPrev');
+        const partnersNext = document.getElementById('partnersNext');
+        const partnersDots = document.getElementById('partnersDots');
+        const partnerLogos = document.querySelectorAll('.partner-logo');
+        
+        let currentSlide = 0;
+        let slidesPerView = getSlidesPerView();
+        const totalSlides = partnerLogos.length;
+        let maxSlide = totalSlides - slidesPerView;
+        let autoScrollInterval;
+
+        function getSlidesPerView() {
+            if (window.innerWidth >= 1024) return 4;
+            if (window.innerWidth >= 768) return 3;
+            if (window.innerWidth >= 480) return 2;
+            return 1;
+        }
+
+        function updateCarousel() {
+            const slideWidth = 100 / slidesPerView;
+            partnersTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+            updateDots();
+            updateButtons();
+        }
+
+        function createDots() {
+            partnersDots.innerHTML = '';
+            for (let i = 0; i <= maxSlide; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === currentSlide) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    updateCarousel();
+                    resetAutoScroll();
+                });
+                partnersDots.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = partnersDots.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function updateButtons() {
+            partnersPrev.disabled = currentSlide === 0;
+            partnersNext.disabled = currentSlide >= maxSlide;
+        }
+
+        function nextSlide() {
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                nextSlide();
+            }, 3000);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        partnersPrev.addEventListener('click', () => {
+            prevSlide();
+            resetAutoScroll();
+        });
+
+        partnersNext.addEventListener('click', () => {
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateCarousel();
+            resetAutoScroll();
+        });
+
+        window.addEventListener('resize', () => {
+            const newSlidesPerView = getSlidesPerView();
+            if (newSlidesPerView !== slidesPerView) {
+                slidesPerView = newSlidesPerView;
+                maxSlide = totalSlides - slidesPerView;
+                currentSlide = Math.min(currentSlide, maxSlide);
+                createDots();
+                updateCarousel();
+            }
+        });
+
+        createDots();
+        updateCarousel();
+        startAutoScroll();
+
+        document.getElementById('partnersCarousel').addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+
+        document.getElementById('partnersCarousel').addEventListener('mouseleave', () => {
+            startAutoScroll();
+        });
+    </script> -->
+</body>
+</html>
