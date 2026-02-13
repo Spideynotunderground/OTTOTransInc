@@ -363,7 +363,7 @@ main {
     }
 }
 
-/* Opportunity Section - New Design */
+/* Opportunity Section */
 .opportunity-cards {
     display: grid;
     grid-template-columns: 1fr;
@@ -494,7 +494,7 @@ main {
     z-index: 1;
 }
 
-/* Partners Section - Carousel */
+/* Partners Section */
 .partners-carousel-container {
     position: relative;
     max-width: 1000px;
@@ -608,6 +608,11 @@ main {
     background-color: #2e7d3280;
 }
 
+.partners-cta {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
 @media (max-width: 640px) {
     .carousel-btn {
         width: 40px;
@@ -641,25 +646,39 @@ main {
 
 .findings-card {
     background-color: white;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     border-radius: 24px;
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.findings-title {
-    font-size: 1.5rem;
+.findings-number {
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: #2e7d32;
+    line-height: 1;
+}
+
+@media (min-width: 1536px) {
+    .findings-number {
+        font-size: 4rem;
+    }
 }
 
 .findings-text {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.4;
     color: #666666;
 }
 
-/* Contacts Section */
+@media (min-width: 1536px) {
+    .findings-text {
+        font-size: 1.125rem;
+    }
+}
+
+/* Contact Section */
 .contacts-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -701,6 +720,48 @@ main {
     font-family: inherit;
 }
 
+.form-group input[type="file"] {
+    display: none;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #f4f7f4;
+    border: 2px dashed #d1d5db;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+    color: #1b1b1b;
+}
+
+.file-upload-label:hover {
+    border-color: #2e7d32;
+    background-color: #e8f5e9;
+}
+
+.file-upload-label svg {
+    width: 20px;
+    height: 20px;
+    color: #2e7d32;
+}
+
+.file-name {
+    font-size: 0.875rem;
+    color: #666666;
+    font-style: italic;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
@@ -710,34 +771,41 @@ main {
 
 .form-group textarea {
     resize: vertical;
+    min-height: 100px;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
-.contact-item h4 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #2e7d32;
+.contact-item {
+    display: flex;
 }
 
 .contact-item a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     color: #1b1b1b;
     text-decoration: none;
     transition: color 0.2s;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    width: 100%;
 }
 
 .contact-item a:hover {
     color: #2e7d32;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
 }
 
-.contact-item p {
-    color: #666666;
-    line-height: 1.6;
+.contact-item svg {
+    flex-shrink: 0;
+    color: #2e7d32;
 }
 
 /* Footer */

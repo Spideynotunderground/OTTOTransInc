@@ -124,3 +124,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/uploads/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files/uploads')
+
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sitoramukhamedjanova@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'rhrt ltjn mkfx ulwq'  # Your Gmail app password (not regular password)
