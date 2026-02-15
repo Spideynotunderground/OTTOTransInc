@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTTO Trans Inc. - Drive More, Earn More</title>
     <meta name="description" content="Get steady freight, competitive pay, and the support you need to keep moving forward with OTTO Trans Inc.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Yubuyan Bold Font -->
+    <link href="https://db.onlinewebfonts.com/c/9a17525c2cffe7cde0f5bfb2986c9cf2?family=YU+Buyan+Bold" rel="stylesheet">
+    
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
@@ -21,7 +30,7 @@
                     <a href="#about">About</a>
                     <a href="#opportunity">Opportunity</a>
                     <a href="#partners">Partners</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#contacts">Contact</a>
                 </nav>
 
                 <a href="tel:(267) 270-6626" class="btn-phone desktop-btn">
@@ -47,7 +56,7 @@
                 <a href="#about">About</a>
                 <a href="#opportunity">Opportunity</a>
                 <a href="#partners">Partners</a>
-                <a href="#contact">Contact</a>
+                <a href="#contacts">Contact</a>
             </nav>
             <a href="tel:(267) 270-6626" class="btn-phone">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -64,13 +73,12 @@
             <div class="section-head">
                 <h1 class="section-title">Drive More. Earn More.<br>Grow with OTTO Trans Inc.</h1>
                 <p class="section-description">Get steady freight, competitive pay, and the support you need to keep moving forward.</p>
-                <a href="#contact" class="btn-primary">Apply Now</a>
+                <a href="#contacts" class="btn-primary">Apply Now</a>
             </div>
             <div class="hero-image">
                 <img src="{% static 'images/hero.webp' %}" alt="Trucking" />
             </div>
         </section>
-
         <!-- About Section -->
         <section id="about" class="section">
             <div class="section-head">
@@ -112,7 +120,7 @@
                 <p class="section-description">At <strong>OTTO Trans Inc.</strong>, we offer flexible options for drivers. Pick the type of freight that matches your goals and lifestyle.</p>
             </div>
             <div class="opportunity-cards">
-                <article class="opportunity-card" data-title="Dry Van">
+                <article class="opportunity-card">
                     <div class="opportunity-card-content">
                         <h3>Dry Van</h3>
                         <ul>
@@ -129,7 +137,7 @@
                     <img src="{% static 'images/dryvan.webp' %}" alt="Dry Van trucking service" class="opportunity-bg" />
                 </article>
 
-                <article class="opportunity-card" data-title="Flatbed">
+                <article class="opportunity-card">
                     <div class="opportunity-card-content">
                         <h3>Flatbed</h3>
                         <ul>
@@ -146,7 +154,7 @@
                     <img src="{% static 'images/flatbed.webp' %}" alt="Flatbed trucking service" class="opportunity-bg" />
                 </article>
 
-                <article class="opportunity-card" data-title="PO (AMAZON and US mail)">
+                <article class="opportunity-card">
                     <div class="opportunity-card-content">
                         <h3>PO (AMAZON and US mail)</h3>
                         <ul>
@@ -222,87 +230,90 @@
             <div class="findings-grid">
                 <div class="findings-card">
                     <h3 class="findings-number">97%</h3>
+                    <div class="findings-divider"></div>
                     <p class="findings-text">Amazon Performance Score</p>
                 </div>
                 <div class="findings-card">
                     <h3 class="findings-number">650000</h3>
+                    <div class="findings-divider"></div>
                     <p class="findings-text">Weekly Shipment Value</p>
                 </div>
                 <div class="findings-card">
                     <h3 class="findings-number">492</h3>
+                    <div class="findings-divider"></div>
                     <p class="findings-text">Loads delivered this week</p>
                 </div>
             </div>
         </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="section-head">
-                <h2 class="section-title">Start Your Journey with OTTO Trans Inc.</h2>
-                <p class="section-description">Fill out the quick form and our recruiter will contact you shortly.</p>
+        <!-- Contact Section - FIXED SPACING -->
+        <section id="contacts" class="section contacts-section">
+            <div class="section-head-contacts">
+                <h2 class="section-title-contacts">Start Your Journey<br>with OTTO Trans Inc.</h2>
             </div>
             <div class="contacts-grid">
-                <div class="contact-form">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            {{ form.full_name }}
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            {{ form.phone_number }}
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            {{ form.email }}
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            {{ form.message }}
-                        </div>
-                        <div class="form-group">
-                            <label>Upload Driver's License (photo)</label>
-                            <div class="file-upload-wrapper">
-                                {{ form.drivers_license }}
-                                <label for="id_drivers_license" class="file-upload-label">
-                                    <svg viewBox="0 0 20 20" fill="none">
-                                        <path d="M10 4.16667V15.8333M10 4.16667L6.66667 7.5M10 4.16667L13.3333 7.5M2.5 15.8333H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    Choose File
-                                </label>
-                                <span class="file-name" id="fileName">No file chosen</span>
+                <div class="contacts-left">
+                    <h2 class="contacts-subtitle">Fill out the quick form and our recruiter will contact you shortly.</h2>
+                    <div class="contact-info-list">
+                        <a href="tel:(267) 270-6626" class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M3.62 7.79C5.06 10.62 7.38 12.93 10.21 14.38L12.41 12.18C12.68 11.91 13.08 11.82 13.43 11.94C14.55 12.31 15.76 12.51 17 12.51C17.55 12.51 18 12.96 18 13.51V17C18 17.55 17.55 18 17 18C7.61 18 0 10.39 0 1C0 0.45 0.45 0 1 0H4.5C5.05 0 5.5 0.45 5.5 1C5.5 2.25 5.7 3.45 6.07 4.57C6.18 4.92 6.1 5.31 5.82 5.59L3.62 7.79Z" fill="white"/>
+                                </svg>
                             </div>
-                        </div>
-                        <button type="submit" class="btn-primary">Apply Now</button>
-                    </form>
+                            <span>(267) 270-6626</span>
+                        </a>
+                        <a href="mailto:operations@ottotransinc.com" class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none">
+                                    <path d="M2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196667 15.0217 0.000666667 14.5507 0 14V2C0 1.45 0.196 0.979333 0.588 0.588C0.98 0.196666 1.45067 0.000666667 2 0H18C18.55 0 19.021 0.196 19.413 0.588C19.805 0.98 20.0007 1.45067 20 2V14C20 14.55 19.8043 15.021 19.413 15.413C19.0217 15.805 18.5507 16.0007 18 16H2ZM10 9L18 4V2L10 7L2 2V4L10 9Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <span>operations@ottotransinc.com</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/TCBrGbV2vU52QdLq8" target="_blank" class="contact-info-item">
+                            <div class="contact-icon">
+                                <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+                                    <path d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <span>840 1st Ave Suite 400, King of Prussia, PA 19406</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <a href="tel:(267) 270-6626" class="contact-link-phone">
-                            <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                                <path d="M3.21778 6.92444C4.49778 9.44 6.56 11.4933 9.07556 12.7822L11.0311 10.8267C11.2711 10.5867 11.6267 10.5067 11.9378 10.6133C12.9333 10.9422 14.0089 11.12 15.1111 11.12C15.6 11.12 16 11.52 16 12.0089V15.1111C16 15.6 15.6 16 15.1111 16C6.76444 16 0 9.23556 0 0.888889C0 0.4 0.4 0 0.888889 0H4C4.48889 0 4.88889 0.4 4.88889 0.888889C4.88889 2 5.06667 3.06667 5.39556 4.06222C5.49333 4.37333 5.42222 4.72 5.17333 4.96889L3.21778 6.92444Z" fill="currentColor"/>
-                            </svg>
-                            (267) 270-6626
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <a href="mailto:operations@ottotransinc.com" class="contact-link-email">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M2.5 5.83333L10 10.8333L17.5 5.83333M2.5 4.16667H17.5C18.4205 4.16667 19.1667 4.91286 19.1667 5.83333V14.1667C19.1667 15.0871 18.4205 15.8333 17.5 15.8333H2.5C1.57953 15.8333 0.833336 15.0871 0.833336 14.1667V5.83333C0.833336 4.91286 1.57953 4.16667 2.5 4.16667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            operations@ottotransinc.com
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <a href="https://maps.app.goo.gl/TCBrGbV2vU52QdLq8" class="contact-link-address" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M10 10.8333C11.3807 10.8333 12.5 9.71404 12.5 8.33333C12.5 6.95262 11.3807 5.83333 10 5.83333C8.61929 5.83333 7.5 6.95262 7.5 8.33333C7.5 9.71404 8.61929 10.8333 10 10.8333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 17.5C13.3333 14.1667 16.6667 11.4003 16.6667 8.33333C16.6667 4.65143 13.6819 1.66667 10 1.66667C6.3181 1.66667 3.33334 4.65143 3.33334 8.33333C3.33334 11.4003 6.66667 14.1667 10 17.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            840 1st Ave Suite 400, King of Prussia, PA 19406
-                        </a>
-                    </div>
+                <div class="contact-form">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data" id="driverForm">
+                        {% csrf_token %}
+                        <input type="hidden" name="driver_form" value="1">
+                        <div class="form-group">
+                            {{ driver_form.full_name }}
+                        </div>
+                        <div class="form-group">
+                            {{ driver_form.phone_number }}
+                        </div>
+                        <div class="form-group">
+                            {{ driver_form.email }}
+                        </div>
+                        <div class="form-group file-group">
+                            <label for="id_drivers_license" class="file-upload-label" id="fileLabel">
+                                <span id="fileText">Upload Driver's License (photo)</span>
+                            </label>
+                            {{ driver_form.drivers_license }}
+                            {% if driver_form.drivers_license.errors %}
+                                <span class="error-message">{{ driver_form.drivers_license.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ driver_form.message }}
+                        </div>
+                        <button type="submit" class="btn-primary btn-submit" id="driverSubmitBtn">Apply Now</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -319,7 +330,7 @@
                     <a href="#about">About</a>
                     <a href="#opportunity">Opportunity</a>
                     <a href="#partners">Partners</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#contacts">Contact</a>
                 </nav>
                 <div class="footer-cta">
                     <p>Need reliable freight solutions?<br>OTTO Trans Inc. delivers your loads safely and on time — anywhere across the U.S.</p>
@@ -332,6 +343,92 @@
         </div>
     </footer>
 
+    <!-- Shipper Request Modal -->
+    <div class="modal" id="shipperModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <h2 class="modal-title">REQUEST A DEDICATED LANE</h2>
+            
+            <div id="modalMessage" class="modal-message" style="display: none;"></div>
+            
+            <form id="shipperForm">
+                {% csrf_token %}
+                <input type="hidden" name="shipper_form" value="1">
+                
+                <h3 class="modal-section-title">CONTACT INFORMATION:</h3>
+                <div class="modal-form-row">
+                    <div class="modal-form-group">
+                        {{ shipper_form.company_name }}
+                        <span class="modal-error" id="error_company_name"></span>
+                    </div>
+                    <div class="modal-form-group">
+                        {{ shipper_form.full_name }}
+                        <span class="modal-error" id="error_full_name"></span>
+                    </div>
+                </div>
+                
+                <div class="modal-form-row">
+                    <div class="modal-form-group">
+                        {{ shipper_form.phone_number }}
+                        <span class="modal-error" id="error_phone_number"></span>
+                    </div>
+                    <div class="modal-form-group">
+                        {{ shipper_form.email }}
+                        <span class="modal-error" id="error_email"></span>
+                    </div>
+                </div>
+                
+                <h3 class="modal-section-title">LANE DETAILS:</h3>
+                <div class="modal-form-row">
+                    <div class="modal-form-group">
+                        {{ shipper_form.origin_city_state }}
+                        <span class="modal-error" id="error_origin_city_state"></span>
+                    </div>
+                    <div class="modal-form-group">
+                        {{ shipper_form.destination_city_state }}
+                        <span class="modal-error" id="error_destination_city_state"></span>
+                    </div>
+                </div>
+                
+                <div class="modal-form-row">
+                    <div class="modal-form-group">
+                        <div class="date-input-wrapper">
+                            {{ shipper_form.frequency }}
+                            <svg class="calendar-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M6 2V5M14 2V5M3 8H17M4 4H16C16.5523 4 17 4.44772 17 5V17C17 17.5523 16.5523 18 16 18H4C3.44772 18 3 17.5523 3 17V5C3 4.44772 3.44772 4 4 4Z" stroke="#1b1b1b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="modal-error" id="error_frequency"></span>
+                    </div>
+                    <div class="modal-form-group">
+                        {{ shipper_form.equipment_type }}
+                        <span class="modal-error" id="error_equipment_type"></span>
+                    </div>
+                </div>
+                
+                <div class="modal-form-group modal-form-group-full">
+                    {{ shipper_form.estimated_volume }}
+                    <span class="modal-error" id="error_estimated_volume"></span>
+                </div>
+                
+                <h3 class="modal-section-title">ADDITIONAL NOTES:</h3>
+                <div class="modal-form-group modal-form-group-full">
+                    {{ shipper_form.additional_notes }}
+                    <span class="modal-error" id="error_additional_notes"></span>
+                </div>
+                
+                <button type="submit" class="btn-modal-submit" id="shipperSubmitBtn">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Flatpickr JS for date picker -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

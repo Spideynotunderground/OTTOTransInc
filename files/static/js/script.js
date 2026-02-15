@@ -1,4 +1,4 @@
-// Mobile menu toggle
+// Mobile menu
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -7,14 +7,12 @@ if (menuToggle && mobileMenu) {
         mobileMenu.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking backdrop
     mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) {
             mobileMenu.classList.remove('active');
         }
     });
 
-    // Close mobile menu when clicking a link
     document.querySelectorAll('.mobile-nav a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
@@ -22,7 +20,7 @@ if (menuToggle && mobileMenu) {
     });
 }
 
-// Smooth scrolling for anchor links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -33,11 +31,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Opportunity cards click to apply
+// Opportunity cards
 document.querySelectorAll('.opportunity-card').forEach(card => {
     card.addEventListener('click', function() {
-        // Scroll to contact form
-        const contactSection = document.getElementById('contact');
+        const contactSection = document.getElementById('contacts');
         if (contactSection) {
             contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -166,25 +163,176 @@ if (partnersTrack && partnersPrev && partnersNext && partnersDots) {
     });
 }
 
-// Shipper/Broker button handlers
-const shipperBtns = document.querySelectorAll('#shipperBtn, #shipperBtn2');
-shipperBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // You can customize this - could open a modal, redirect, etc.
-        alert('For Broker/Shipper inquiries, please call (267) 270-6626 or email operations@ottotransinc.com');
-    });
-});
-
 // File upload display
 const fileInput = document.getElementById('id_drivers_license');
-const fileNameDisplay = document.getElementById('fileName');
+const fileLabel = document.getElementById('fileLabel');
+const fileText = document.getElementById('fileText');
 
-if (fileInput && fileNameDisplay) {
+if (fileInput && fileLabel && fileText) {
+    function truncateFileName(fileName, maxLength = 30) {
+        if (fileName.length <= maxLength) return fileName;
+        
+        const extension = fileName.split('.').pop();
+        const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
+        const truncatedName = nameWithoutExt.substring(0, maxLength - 3 - (extension?.length || 0));
+        
+        return `${truncatedName}...${extension ? `.${extension}` : ''}`;
+    }
+
     fileInput.addEventListener('change', function() {
         if (this.files && this.files.length > 0) {
-            fileNameDisplay.textContent = this.files[0].name;
+            const fileName = this.files[0].name;
+            const truncated = truncateFileName(fileName);
+            fileText.innerHTML = `<span style="color: #2e7d32; font-weight: 600;">File selected: <strong>${truncated}</strong></span>`;
+            fileLabel.classList.add('has-file');
         } else {
-            fileNameDisplay.textContent = 'No file chosen';
+            fileText.textContent = "Upload Driver's License (photo)";
+            fileLabel.classList.remove('has-file');
         }
     });
 }
+
+// Driver form submit
+const driverForm = document.getElementById('driverForm');
+const driverSubmitBtn = document.getElementById('driverSubmitBtn');
+
+if (driverForm && driverSubmitBtn) {
+    driverForm.addEventListener('submit', function(e) {
+        driverSubmitBtn.disabled = true;
+        driverSubmitBtn.textContent = 'Sending...';
+    });
+}
+
+// Phone formatting
+const phoneInputs = document.querySelectorAll('input[type="tel"]');
+phoneInputs.forEach(phoneInput => {
+    phoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+            if (value.length <= 3) {
+                value = `(${value}`;
+            } else if (value.length <= 6) {
+                value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+            } else {
+                value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+            }
+        }
+        e.target.value = value;
+    });
+});
+
+// DATE RANGE PICKER - FLATPICKR
+const frequencyInput = document.getElementById('frequency-date-range');
+if (frequencyInput && typeof flatpickr !== 'undefined') {
+    flatpickr(frequencyInput, {
+        mode: 'range',
+        dateFormat: 'm/d/Y',
+        minDate: 'today',
+        onChange: function(selectedDates, dateStr, instance) {
+            // Update the input value with formatted date range
+            if (selectedDates.length === 2) {
+                const start = instance.formatDate(selectedDates[0], 'm/d/Y');
+                const end = instance.formatDate(selectedDates[1], 'm/d/Y');
+                frequencyInput.value = `${start} - ${end}`;
+            }
+        }
+    });
+}
+
+// Shipper Modal
+const shipperModal = document.getElementById('shipperModal');
+const shipperBtns = document.querySelectorAll('#shipperBtn, #shipperBtn2');
+const modalClose = document.getElementById('modalClose');
+const modalOverlay = document.querySelector('.modal-overlay');
+const shipperForm = document.getElementById('shipperForm');
+const shipperSubmitBtn = document.getElementById('shipperSubmitBtn');
+const modalMessage = document.getElementById('modalMessage');
+
+// Open modal
+shipperBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        shipperModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Close modal
+function closeModal() {
+    shipperModal.classList.remove('active');
+    document.body.style.overflow = '';
+    shipperForm.reset();
+    modalMessage.style.display = 'none';
+    document.querySelectorAll('.modal-error').forEach(error => {
+        error.textContent = '';
+    });
+}
+
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && shipperModal.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// Handle shipper form submission
+shipperForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Clear errors
+    document.querySelectorAll('.modal-error').forEach(error => {
+        error.textContent = '';
+    });
+    modalMessage.style.display = 'none';
+    
+    shipperSubmitBtn.disabled = true;
+    shipperSubmitBtn.textContent = 'Submitting...';
+    
+    const formData = new FormData(shipperForm);
+    
+    try {
+        const response = await fetch(window.location.href, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            modalMessage.textContent = data.message || 'Request submitted successfully!';
+            modalMessage.className = 'modal-message success';
+            modalMessage.style.display = 'block';
+            
+            shipperForm.reset();
+            
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+        } else {
+            if (data.errors) {
+                Object.keys(data.errors).forEach(field => {
+                    const errorElement = document.getElementById(`error_${field}`);
+                    if (errorElement) {
+                        errorElement.textContent = data.errors[field];
+                    }
+                });
+            }
+            
+            modalMessage.textContent = data.message || 'Please fix the errors below';
+            modalMessage.className = 'modal-message error';
+            modalMessage.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        modalMessage.textContent = 'An error occurred. Please try again.';
+        modalMessage.className = 'modal-message error';
+        modalMessage.style.display = 'block';
+    } finally {
+        shipperSubmitBtn.disabled = false;
+        shipperSubmitBtn.textContent = 'Submit Request';
+    }
+});
