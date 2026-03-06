@@ -18,7 +18,13 @@ def home(request):
             if driver_form.is_valid():
                 try:
                     contact = driver_form.save()
-                    
+                    truck_type = request.POST.get('truck_type', '')
+                    truck_label = {
+                        'dry_van': 'Dry Van',
+                        'flatbed': 'Flatbed',
+                        'po': 'PO (Amazon and US mail)',
+                    }.get(truck_type, 'Not specified')
+
                     subject = f"New Driver Application: {driver_form.cleaned_data['full_name']}"
                     email_body = f"""
 New Driver Application Received:
@@ -26,6 +32,7 @@ New Driver Application Received:
 Full Name: {driver_form.cleaned_data['full_name']}
 Phone: {driver_form.cleaned_data['phone_number']}
 Email: {driver_form.cleaned_data['email']}
+Truck Type: {truck_label}
 Message: {driver_form.cleaned_data['message'] or 'No additional message'}
 Driver's License: Uploaded (see attachment)
 
@@ -47,13 +54,22 @@ Submitted at: {contact.created_at.strftime('%Y-%m-%d %H:%M:%S')}
                             email.attach(contact.drivers_license.name, f.read(), mime_type or 'application/octet-stream')
                     
                     email.send(fail_silently=False)
+
+                    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                        return JsonResponse({'success': True, 'message': 'WE HAVE RECEIVED YOUR REQUEST. WE WILL CONTACT YOU IN 24 HOURS'})
+
                     messages.success(request, 'WE HAVE RECEIVED YOUR REQUEST. WE WILL CONTACT YOU IN 24 HOURS')
                     return redirect('app:home')
                     
                 except Exception as e:
                     print(f"Error sending driver email: {e}")
+                    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                        return JsonResponse({'success': False, 'message': 'An error occurred. Please try again.'})
                     messages.error(request, 'An error occurred. Please try again.')
             else:
+                if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                    errors = {field: errs[0] for field, errs in driver_form.errors.items()}
+                    return JsonResponse({'success': False, 'errors': errors, 'message': 'Please fix the errors below.'})
                 if 'drivers_license' in driver_form.errors:
                     messages.error(request, driver_form.errors['drivers_license'][0])
                     

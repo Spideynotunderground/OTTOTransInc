@@ -31,15 +31,138 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Opportunity cards
+// Opportunity cards → Apply Modal
+const applyModal = document.getElementById('applyModal');
+const applyModalOverlay = document.getElementById('applyModalOverlay');
+const applyModalClose = document.getElementById('applyModalClose');
+const applyModalTitle = document.getElementById('applyModalTitle');
+const applyModalImage = document.getElementById('applyModalImage');
+const applyTruckType = document.getElementById('applyTruckType');
+const applyForm = document.getElementById('applyForm');
+const applySubmitBtn = document.getElementById('applySubmitBtn');
+const applyMessage = document.getElementById('applyMessage');
+const applyFileLabel = document.getElementById('applyFileLabel');
+const applyFileText = document.getElementById('applyFileText');
+const applyLicense = document.getElementById('applyLicense');
+
+function openApplyModal(type, title, imageSrc) {
+    applyModalTitle.textContent = title;
+    applyModalImage.src = imageSrc;
+    applyTruckType.value = type;
+    applyModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeApplyModal() {
+    applyModal.classList.remove('active');
+    document.body.style.overflow = '';
+    applyForm.reset();
+    applyMessage.style.display = 'none';
+    applyMessage.className = 'apply-message';
+    applyFileText.textContent = "Upload Driver's License (photo)";
+    applyFileLabel.classList.remove('has-file');
+    document.querySelectorAll('.apply-error').forEach(el => el.textContent = '');
+}
+
 document.querySelectorAll('.opportunity-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const contactSection = document.getElementById('contacts');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    card.addEventListener('click', function () {
+        const type = this.dataset.modalType;
+        const title = this.dataset.modalTitle;
+        const image = this.dataset.modalImage;
+        openApplyModal(type, title, image);
     });
 });
+
+if (applyModalClose) applyModalClose.addEventListener('click', closeApplyModal);
+if (applyModalOverlay) applyModalOverlay.addEventListener('click', closeApplyModal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && applyModal && applyModal.classList.contains('active')) {
+        closeApplyModal();
+    }
+});
+
+// File upload display for apply modal
+if (applyLicense && applyFileLabel && applyFileText) {
+    applyLicense.addEventListener('change', function () {
+        if (this.files && this.files.length > 0) {
+            const name = this.files[0].name;
+            const truncated = name.length > 28 ? name.substring(0, 25) + '...' : name;
+            applyFileText.innerHTML = `<span style="color:#2e7d32;font-weight:600;">File: <strong>${truncated}</strong></span>`;
+            applyFileLabel.classList.add('has-file');
+        } else {
+            applyFileText.textContent = "Upload Driver's License (photo)";
+            applyFileLabel.classList.remove('has-file');
+        }
+    });
+}
+
+// Phone formatting for apply modal phone input
+const applyPhoneInput = document.getElementById('applyPhone');
+if (applyPhoneInput) {
+    applyPhoneInput.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+            if (value.length <= 3) value = `(${value}`;
+            else if (value.length <= 6) value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+            else value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+        e.target.value = value;
+    });
+}
+
+// Submit apply form via AJAX
+if (applyForm) {
+    applyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Clear errors
+        document.querySelectorAll('.apply-error').forEach(el => el.textContent = '');
+        applyMessage.style.display = 'none';
+
+        applySubmitBtn.disabled = true;
+        applySubmitBtn.textContent = 'Sending...';
+
+        const formData = new FormData(applyForm);
+
+        try {
+            const response = await fetch(window.location.href, {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                applyMessage.textContent = data.message || 'Application submitted! We will contact you within 24 hours.';
+                applyMessage.className = 'apply-message success';
+                applyMessage.style.display = 'block';
+                applyForm.reset();
+                applyFileText.textContent = "Upload Driver's License (photo)";
+                applyFileLabel.classList.remove('has-file');
+                setTimeout(() => closeApplyModal(), 2500);
+            } else {
+                if (data.errors) {
+                    Object.keys(data.errors).forEach(field => {
+                        const el = document.getElementById(`applyErr_${field}`);
+                        if (el) el.textContent = data.errors[field];
+                    });
+                }
+                applyMessage.textContent = data.message || 'Please fix the errors and try again.';
+                applyMessage.className = 'apply-message error';
+                applyMessage.style.display = 'block';
+            }
+        } catch (err) {
+            applyMessage.textContent = 'An error occurred. Please try again.';
+            applyMessage.className = 'apply-message error';
+            applyMessage.style.display = 'block';
+        } finally {
+            applySubmitBtn.disabled = false;
+            applySubmitBtn.textContent = 'Apply Now';
+        }
+    });
+}
 
 // Partners Carousel
 const partnersTrack = document.getElementById('partnersTrack');

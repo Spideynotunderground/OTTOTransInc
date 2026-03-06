@@ -120,7 +120,7 @@
                 <p class="section-description">At <strong>OTTO Trans Inc.</strong>, we offer flexible options for drivers. Pick the type of freight that matches your goals and lifestyle.</p>
             </div>
             <div class="opportunity-cards">
-                <article class="opportunity-card">
+                <article class="opportunity-card" data-modal-type="dry_van" data-modal-title="APPLY FOR DRY VAN" data-modal-image="{% static 'images/dryvan.webp' %}">
                     <div class="opportunity-card-content">
                         <h3>Dry Van</h3>
                         <ul>
@@ -137,7 +137,7 @@
                     <img src="{% static 'images/dryvan.webp' %}" alt="Dry Van trucking service" class="opportunity-bg" />
                 </article>
 
-                <article class="opportunity-card">
+                <article class="opportunity-card" data-modal-type="flatbed" data-modal-title="APPLY FOR FLATBED" data-modal-image="{% static 'images/flatbed.webp' %}">
                     <div class="opportunity-card-content">
                         <h3>Flatbed</h3>
                         <ul>
@@ -154,7 +154,7 @@
                     <img src="{% static 'images/flatbed.webp' %}" alt="Flatbed trucking service" class="opportunity-bg" />
                 </article>
 
-                <article class="opportunity-card">
+                <article class="opportunity-card" data-modal-type="po" data-modal-title="APPLY FOR PO (AMAZON AND US MAIL)" data-modal-image="{% static 'images/po.webp' %}">
                     <div class="opportunity-card-content">
                         <h3>PO (AMAZON and US mail)</h3>
                         <ul>
@@ -424,6 +424,57 @@
                 
                 <button type="submit" class="btn-modal-submit" id="shipperSubmitBtn">Submit Request</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Apply Modal (Opportunity Cards) -->
+    <div class="apply-modal" id="applyModal">
+        <div class="apply-modal-overlay" id="applyModalOverlay"></div>
+        <div class="apply-modal-content">
+            <button class="apply-modal-close" id="applyModalClose">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="apply-modal-form-side">
+                <h2 class="apply-modal-title" id="applyModalTitle">APPLY FOR DRY VAN</h2>
+
+                <div class="apply-message" id="applyMessage"></div>
+
+                <form id="applyForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="driver_form" value="1">
+                    <input type="hidden" name="truck_type" id="applyTruckType" value="">
+
+                    <div class="apply-form-group">
+                        <input type="text" name="full_name" class="apply-form-input" placeholder="Full Name" id="applyFullName">
+                        <span class="apply-error" id="applyErr_full_name"></span>
+                    </div>
+                    <div class="apply-form-group">
+                        <input type="tel" name="phone_number" class="apply-form-input" placeholder="(555) 123-4567" id="applyPhone">
+                        <span class="apply-error" id="applyErr_phone_number"></span>
+                    </div>
+                    <div class="apply-form-group">
+                        <input type="email" name="email" class="apply-form-input" placeholder="Email address" id="applyEmail">
+                        <span class="apply-error" id="applyErr_email"></span>
+                    </div>
+                    <div class="apply-form-group">
+                        <label for="applyLicense" class="apply-file-label" id="applyFileLabel">
+                            <span id="applyFileText">Upload Driver's License (photo)</span>
+                        </label>
+                        <input type="file" name="drivers_license" id="applyLicense" class="apply-file-input" accept="image/jpeg,image/png,image/webp,application/pdf">
+                        <span class="apply-error" id="applyErr_drivers_license"></span>
+                    </div>
+                    <div class="apply-form-group">
+                        <textarea name="message" class="apply-form-textarea" placeholder="Additional text..." id="applyMessage2" rows="3"></textarea>
+                        <span class="apply-error" id="applyErr_message"></span>
+                    </div>
+                    <button type="submit" class="btn-apply-submit" id="applySubmitBtn">Apply Now</button>
+                </form>
+            </div>
+            <div class="apply-modal-image-side">
+                <img src="{% static 'images/dryvan.webp' %}" alt="Truck" id="applyModalImage">
+            </div>
         </div>
     </div>
 
